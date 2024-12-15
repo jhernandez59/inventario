@@ -120,7 +120,7 @@ if ($clave_1 != $clave_2) {
 # Guardar el usuario #
 $guardar_usuario = conexion();
 $guardar_usuario = $guardar_usuario->prepare("INSERT INTO usuario 
-    VALUES(NULL, :nombre, :apellido, :usuario, :email, :clave)");
+    VALUES(NULL, :nombre, :apellido, :usuario, :clave, :email)");
 
 $guardar_usuario->bindParam(':nombre', $nombre);
 $guardar_usuario->bindParam(':apellido', $apellido);
