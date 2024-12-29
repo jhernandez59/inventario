@@ -24,7 +24,7 @@ if ($nombre == "" || $apellido == "" || $usuario == "" || $clave_1 == "" || $cla
 }
 
 # Verificar integridad de los datos #
-if (verificar_datos("^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}$", $nombre)) {
+if (verificar_datos("^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,32}$", $nombre)) {
   echo '
     <div class="notification is-danger is-light">
       <strong>¡Ocurrido un error inesperado!</strong><br>
@@ -34,7 +34,7 @@ if (verificar_datos("^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}$", $nombre)) {
   exit();
 }
 
-if (verificar_datos("^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}$", $apellido)) {
+if (verificar_datos("^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,32}$", $apellido)) {
   echo '
     <div class="notification is-danger is-light">
       <strong>¡Ocurrido un error inesperado!</strong><br>
@@ -44,7 +44,7 @@ if (verificar_datos("^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}$", $apellido)) {
   exit();
 }
 
-if (verificar_datos("^[a-zA-Z0-9]{4,20}$", $usuario)) {
+if (verificar_datos("^[a-zA-Z0-9]{4,16}$", $usuario)) {
   echo '
     <div class="notification is-danger is-light">
       <strong>¡Ocurrido un error inesperado!</strong><br>
@@ -54,7 +54,10 @@ if (verificar_datos("^[a-zA-Z0-9]{4,20}$", $usuario)) {
   exit();
 }
 
-if (verificar_datos("^[a-zA-Z0-9$@.-]{7,100}$", $clave_1) || verificar_datos("^[a-zA-Z0-9$@.-]{7,100}$", $clave_2)) {
+if (
+  verificar_datos("^[a-zA-Z0-9$@.-]{7,64}$", $clave_1) ||
+  verificar_datos("^[a-zA-Z0-9$@.-]{7,64}$", $clave_2)
+) {
   echo '
     <div class="notification is-danger is-light">
       <strong>¡Ocurrido un error inesperado!</strong><br>

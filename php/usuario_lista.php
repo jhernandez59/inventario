@@ -1,5 +1,6 @@
 <?php
 
+// establece el los limites de los registros a mostrar inicio y total
 $inicio = ($pagina > 0) ? ($pagina * $registros) - $registros : 0;
 $tabla  = "";
 
@@ -19,7 +20,7 @@ if (isset($busqueda) && $busqueda != "") {
       OR usuario_usuario LIKE '%$busqueda%' 
       OR usuario_email LIKE '%$busqueda%'))";
 } else {
-
+  // Consulta para obtener todos los registros de la tabla y el total de registros de la tabla
   $sql = "SELECT * FROM usuario WHERE usuario_id != '" . $_SESSION['id'] . "' 
     ORDER BY usuario_nombre ASC LIMIT $inicio, $registros";
 
@@ -27,6 +28,7 @@ if (isset($busqueda) && $busqueda != "") {
       WHERE usuario_id != '" . $_SESSION['id'] . "' ";
 }
 
+// Obtiene todos los registros y el total de registros
 $conexion = conexion();
 
 $datos = $conexion->query($sql);
@@ -37,6 +39,7 @@ $total = (int) $total->fetch()['total'];
 
 $total_paginas = ceil($total / $registros);
 
+// Mostrar los registros de la tabla en formato HTML
 $tabla  .= '
 <div class="table-container">
     <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
@@ -52,11 +55,11 @@ $tabla  .= '
       </thead>
       <tbody>
 ';
-
+// si hay registros en la base de datos  y la pagina es menor o igual al total de paginas
 if ($total >= 1 && $pagina <= $total_paginas) {
 
   $contador = $inicio + 1;
-  $pag_inicio = $inicio + 1;
+  $reg_inicio = $inicio + 1;
 
   foreach ($datos as $rows) {
 
@@ -67,10 +70,10 @@ if ($total >= 1 && $pagina <= $total_paginas) {
         <td class="has-text-left">' . $rows['usuario_apellido'] . '</td>
         <td class="has-text-left">' . $rows['usuario_usuario'] . '</td>
         <td class="has-text-left">' . $rows['usuario_email'] . '</td>
-        <td>
-          <a href="index.php?view=user_update&user_id_up=' . $rows['usuario_id'] . '" class="button is-success is-rounded is-small">Actualizar</a>
+        <td class="has-text-centered">
+          <a href="index.php?vista=user_update&user_id_up=' . $rows['usuario_id'] . '" class="button is-success is-rounded is-small">Actualizar</a>
         </td>
-        <td>
+        <td class="has-text-centered">
           <a href="' . $url . $pagina . '&user_id_del=' . $rows['usuario_id'] . '" class="button is-danger is-rounded is-small">Eliminar</a>
         </td>
       </tr>
@@ -78,8 +81,9 @@ if ($total >= 1 && $pagina <= $total_paginas) {
     $contador++;
   }
 
-  $pag_final = $contador - 1;
+  $reg_final = $contador - 1;
 } else {
+  // si hay registros en la base de datos
   if ($total >= 1) {
     $tabla .= '
         <tr class="has-text-centered">
@@ -91,6 +95,7 @@ if ($total >= 1 && $pagina <= $total_paginas) {
         </tr>
         ';
   } else {
+    // si no hay registros en la base de datos
     $tabla .= '
         <tr class="has-text-centered">
           <td colspan="7">
@@ -105,8 +110,8 @@ $tabla .= '</tbody></table></div>';
 
 if ($total >= 1 && $pagina <= $total_paginas) {
   $tabla .= '
-  <p class="has-text-right">Mostrando usuarios <strong>' . $pag_inicio . '</strong> 
-  al <strong>' . $pag_final . '</strong> de un <strong>total de ' . $total . '</strong></p>
+  <p class="has-text-right">Mostrando usuarios <strong>' . $reg_inicio . '</strong> 
+  al <strong>' . $reg_final . '</strong> de un <strong>total de ' . $total . '</strong></p>
 
   ';
 }
@@ -114,7 +119,7 @@ if ($total >= 1 && $pagina <= $total_paginas) {
 $conexion = null;
 echo $tabla;
 
-if ($total >= 1 && $pagina <= $total_paginas) {
+if ($total > 3 && $pagina <= $total_paginas) {
   // echo paginador_tablas($pagina, $total_paginas, $url, $num_botones);
   echo paginador_tablas($pagina, $total_paginas, $url, 3);
 }

@@ -11,6 +11,7 @@
     require_once "./php/buscador.php";
   }
 
+  // Mostrar el formulario de busqueda cuando no se ha realizado ninguna busqueda
   if (!isset($_SESSION['busqueda_usuario']) && empty($_SESSION['busqueda_usuario'])) {
   ?>
 
@@ -32,21 +33,23 @@
       </div>
     </div>
 
-  <?php } else {  ?>
+  <?php } else {  // Cancelar la busqueda 
+  ?>
 
     <div class="columns">
       <div class="column">
         <form class="has-text-centered mt-6 mb-6" action="" method="POST" autocomplete="off">
           <input type="hidden" name="modulo_buscador" value="usuario">
           <input type="hidden" name="eliminar_buscador" value="usuario">
-          <p>Estas buscando <strong><?php echo $_SESSION['busqueda_usuario'] ?></strong></p>
+          <p>Estas buscando <strong>"<?php echo $_SESSION['busqueda_usuario'] ?>"</strong></p>
           <br>
-          <button type="submit" class="button is-danger is-rounded">Eliminar busqueda</button>
+          <button type="submit" class="button is-danger is-rounded">Cancelar busqueda</button>
         </form>
       </div>
     </div>
 
   <?php
+    // Mostrar el listado de usuarios con el resultado de la busqueda
     // Eliminar usuario
     if (isset($_GET['user_id_del'])) {
       require_once "./php/usuario_eliminar.php";

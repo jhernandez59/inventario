@@ -4,7 +4,9 @@
       <img src="./img/mariadb-logo_white-transparent.png" width="112">
     </a>
 
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
@@ -14,7 +16,6 @@
 
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-
 
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">Usuarios</a>
@@ -52,7 +53,8 @@
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <a class="button is-primary is-rounded">
+          <a class="button is-primary is-rounded"
+            href="index.php?vista=user_update&user_id_up=<?php echo $_SESSION['id']; ?>">
             Mi Cuenta
           </a>
           <a class="button is-link is-rounded" href="index.php?vista=logout">

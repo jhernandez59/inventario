@@ -11,13 +11,13 @@
       <div class="column">
         <div class="control">
           <label>Nombres</label>
-          <input class="input" type="text" name="usuario_nombre" pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}$" maxlength="40" required>
+          <input class="input" type="text" name="usuario_nombre" pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,32}$" maxlength="32" required>
         </div>
       </div>
       <div class="column">
         <div class="control">
           <label>Apellidos</label>
-          <input class="input" type="text" name="usuario_apellido" pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}$" maxlength="40" required>
+          <input class="input" type="text" name="usuario_apellido" pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,32}$" maxlength="32" required>
         </div>
       </div>
     </div>
@@ -25,13 +25,13 @@
       <div class="column">
         <div class="control">
           <label>Usuario</label>
-          <input class="input" type="text" name="usuario_usuario" pattern="^[a-zA-Z0-9]{4,20}$" maxlength="20" required>
+          <input class="input" type="text" name="usuario_usuario" pattern="^[a-zA-Z0-9]{4,16}$" maxlength="16" required>
         </div>
       </div>
       <div class="column">
         <div class="control">
           <label>Email</label>
-          <input class="input" type="email" name="usuario_email" maxlength="70">
+          <input class="input" type="email" name="usuario_email" maxlength="64">
         </div>
       </div>
     </div>
@@ -39,7 +39,7 @@
       <div class="column">
         <div class="control">
           <label>Clave</label>
-          <input class="input" type="password" name="usuario_clave_1" pattern="^[a-zA-Z0-9$@.-]{7,100}$" maxlength="100" required>
+          <input class="input" type="password" name="usuario_clave_1" pattern="^[a-zA-Z0-9$@.-]{7,64}$" maxlength="64" required>
         </div>
       </div>
       <div class="column">

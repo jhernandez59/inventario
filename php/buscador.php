@@ -10,10 +10,13 @@ if (in_array($modulo_buscador, $modulos)) {
     'producto' => 'product_search'
   ];
 
+  // url para la vista que se debe cargar
   $modulos_url = $modulos_url[$modulo_buscador];
+
+  // para la variable de session
   $modulo_buscador = "busqueda_" . $modulo_buscador;
 
-  // iniciar busqueda
+  // iniciar busqueda, consiste en definir la variable de session
   if (isset($_POST['txt_buscador'])) {
     $txt = limpiar_cadena($_POST['txt_buscador']);
     if ($txt == "") {
@@ -45,7 +48,7 @@ if (in_array($modulo_buscador, $modulos)) {
     }
   }
 
-  // eliminar busqueda
+  // eliminar busqueda, consiste en eliminar la variable de session
   if (isset($_POST['eliminar_buscador'])) {
     unset($_SESSION[$modulo_buscador]);
     header("Location: index.php?vista=$modulos_url", true, 303);

@@ -12,7 +12,7 @@
     require_once "./php/usuario_eliminar.php";
   }
 
-  # Paginador de tablas #
+  // Obtiene la pagina actual
   if (!isset($_GET['page'])) {
     $pagina = 1;
   } else {
@@ -21,8 +21,10 @@
       $pagina = 1;
     }
   }
-
   $pagina = limpiar_cadena($pagina);
+
+  // url para los enlaces del paginador
+  // establece el número de registros por página
   $url = "index.php?vista=user_list&page=";
   $registros = 3; // Registros por página
   $busqueda = "";

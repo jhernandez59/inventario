@@ -1,6 +1,9 @@
+// Selecciona todos los formularios con la clase FormularioAjax
 const formularios_ajax = document.querySelectorAll(".FormularioAjax");
 
+// Función para enviar el formulario cuando se hace clic en el botón "Enviar" (e)
 function enviar_formulario_ajax(e) {
+  // Evita el envío del formulario de forma predeterminada
   e.preventDefault();
 
   let enviar = confirm("Quieres enviar el formulario");
@@ -28,7 +31,7 @@ function enviar_formulario_ajax(e) {
       });
   }
 }
-
+// Agrega un event listener a cada formulario con la clase FormularioAjax
 formularios_ajax.forEach((formularios) => {
   formularios.addEventListener("submit", enviar_formulario_ajax);
 });
