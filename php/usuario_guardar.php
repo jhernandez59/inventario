@@ -93,7 +93,7 @@ if ($email != "") {
   }
 }
 
-# Verificar el usuario #
+# Verificar si el usuario existe #
 $check_user = conexion();
 $check_user = $check_user->query("SELECT usuario_usuario FROM usuario WHERE usuario_usuario = '$usuario'");
 if ($check_user->rowCount() > 0) {
