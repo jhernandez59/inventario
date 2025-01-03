@@ -33,7 +33,8 @@
       </div>
     </div>
 
-  <?php } else {  // Cancelar la busqueda 
+  <?php } else {
+    // Cancelar la busqueda y volver a mostrar el listado de categorias 
   ?>
 
     <div class="columns">

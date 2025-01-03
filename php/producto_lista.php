@@ -9,6 +9,7 @@ $campos = "producto.producto_id, producto.producto_codigo, producto.producto_nom
     categoria.categoria_nombre, usuario.usuario_nombre, usuario.usuario_apellido";
 
 if (isset($busqueda) && $busqueda != "") {
+  // busqueda de productos por codigo o por nombre
   $sql = "SELECT $campos FROM producto INNER JOIN categoria 
     ON producto.categoria_id = categoria.categoria_id INNER JOIN usuario 
     ON producto.usuario_id = usuario.usuario_id WHERE 
@@ -20,7 +21,7 @@ if (isset($busqueda) && $busqueda != "") {
   $sql_total = "SELECT COUNT(producto_id) as total FROM producto 
       WHERE (producto_nombre LIKE '%$busqueda%' OR producto_codigo LIKE '%$busqueda%')";
 } elseif ($categoria_id > 0) {
-
+  // busqueda de productos por una sola categoria
   $sql = "SELECT $campos FROM producto INNER JOIN categoria 
     ON producto.categoria_id = categoria.categoria_id INNER JOIN usuario 
     ON producto.usuario_id = usuario.usuario_id WHERE 
@@ -31,7 +32,7 @@ if (isset($busqueda) && $busqueda != "") {
   $sql_total = "SELECT COUNT(producto_id) as total FROM producto 
       WHERE categoria_id = '$categoria_id'";
 } else {
-  // Consulta para obtener todos los registros de la tabla y el total de registros de la tabla
+  // Consulta para obtener todos los productos por categoria y por usuario 
   $sql = "SELECT $campos FROM producto INNER JOIN categoria 
     ON producto.categoria_id = categoria.categoria_id INNER JOIN usuario 
     ON producto.usuario_id = usuario.usuario_id ORDER BY producto.producto_nombre 
