@@ -51,7 +51,7 @@
 
   <?php
     // Mostrar el listado de categorias con el resultado de la busqueda
-    // Eliminar usuario
+    // Eliminar categoria
     if (isset($_GET['category_id_del'])) {
       require_once "./php/categoria_eliminar.php";
     }

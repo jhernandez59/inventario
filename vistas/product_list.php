@@ -8,11 +8,11 @@
   <?php
   require_once "./php/main.php";
 
-  /* // Eliminar categoria
-  if (isset($_GET['category_id_del'])) {
-    require_once "./php/categoria_eliminar.php";
+  // Eliminar producto
+  if (isset($_GET['product_id_del'])) {
+    require_once "./php/producto_eliminar.php";
   }
- */
+
   // Obtiene la pagina actual
   if (!isset($_GET['page'])) {
     $pagina = 1;
@@ -34,6 +34,5 @@
 
   require_once "./php/producto_lista.php";
   ?>
-
 
 </div>
