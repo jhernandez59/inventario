@@ -18,8 +18,9 @@
       if ($categorias->rowCount() > 0) {
         $categorias = $categorias->fetchAll(PDO::FETCH_ASSOC);
         foreach ($categorias as $row) {
-          echo '<a href="index.php?vista=product_category&category_id= ' . $row['categoria_id'] . '" class="button is-link is-inverted is-fullwidth">
-            ' . $row['categoria_nombre'] . 'Nombres de categorías</a>';
+          echo '<a href="index.php?vista=product_category&category_id= ' . $row['categoria_id'] . '" 
+            class="button is-text is-fullwidth">
+            ' . $row['categoria_nombre'] . '</a>';
         }
       } else {
         echo '<p class="has-text-centered">No hay categorías registradas</p>';

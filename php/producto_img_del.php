@@ -22,10 +22,8 @@ if ($check_product->rowCount() == 1) {
 $check_product = null;
 
 $img_dir = "../img/producto/";
-chmod($img_dir, 0777);
 $img = $img_dir . $datos['producto_foto'];
-if (file_exists($img)) {
-  chmod($img, 0777);
+if (is_file($img)) {
   if (!unlink($img)) {
     echo '
     <div class="notification is-danger is-light mb-6 mt-6">
