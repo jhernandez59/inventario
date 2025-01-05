@@ -19,7 +19,7 @@
         $categorias = $categorias->fetchAll(PDO::FETCH_ASSOC);
         foreach ($categorias as $row) {
           echo '<a href="index.php?vista=product_category&category_id= ' . $row['categoria_id'] . '" 
-            class="button is-text is-fullwidth">
+            class="button is-text is-fullwidth is-left-aligned">
             ' . $row['categoria_nombre'] . '</a>';
         }
       } else {

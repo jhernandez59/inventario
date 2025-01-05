@@ -23,3 +23,7 @@ html {
 .form-inline {
   display: inline-flex;
 }
+
+.button.is-left-aligned {
+  justify-content: flex-start;
+}
